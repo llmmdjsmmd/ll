@@ -10,6 +10,9 @@ export default {
             td_align: 'left',
             is_show_tip: 0,
             width_type: 1,
+            innerClass: {
+                item_ipt:true
+            },
             show_terminal: -1 // 显示端口，默认都显示
         }
     },

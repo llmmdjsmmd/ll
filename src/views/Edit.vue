@@ -7,6 +7,7 @@ import Vue from 'vue'
 import { TYPE_CONTANINER_ID } from '@/common/itemTypeConstant'
 // import BaseObjectItem from '@/components/BaseObjectItem'
 import TextInput from '@/components/TextInput'
+import NormalContainer from '@/components/NormalContainer'
 
 export default {
   data (){
@@ -18,13 +19,16 @@ export default {
       const type = +e.dataTransfer.getData("text/plain");
       if(type === TYPE_CONTANINER_ID){
         let item = new Vue({
-          render: h => h(TextInput)
+          render: h => h(NormalContainer)
         }).$mount();
         this.$el.appendChild(item.$el);
+      }else{
+        alert('必须放到容器中');
       }
     }
   },
   components: {
+    NormalContainer,
     TextInput
   }
 };
