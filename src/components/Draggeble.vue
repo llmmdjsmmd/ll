@@ -1,10 +1,10 @@
 <template>
-  <div draggable="true" @drop.stop="drop" @dragover.prevent @dragstart="dragstart">
+  <div draggable="droppable" @drop.stop="drop" @dragover.prevent @dragstart="dragstart">
     <slot>draggable element</slot>
   </div>
 </template>
 <script>
-import { type } from "os";
+// import { type } from "os";
 export default {
   data() {
     return {};
@@ -21,11 +21,10 @@ export default {
   },
   methods: {
     dragstart(event) {
-      event.dataTransfer.setData("text/html", event.target);
+      this.$emit('dragstart', event);
     },
     drop(e) {
-      e.target.appendChild(e.relatedTarget);
-      !isCopy && e.relatedTarget.parentNode.removeChild(e.relatedTarget);
+      this.$emit('drop', event, isCopy);
     }
   }
 };

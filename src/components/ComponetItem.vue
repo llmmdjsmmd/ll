@@ -1,7 +1,6 @@
 <template>
   <div type="itemInfo.id">
     <span>{{itemInfo.name}}</span>
-    <button @click="del">X</button>
   </div>
 </template>
 
@@ -9,7 +8,7 @@
 export default {
   data() {
     return {
-
+      
     }
   },
   props: ['itemInfo'],

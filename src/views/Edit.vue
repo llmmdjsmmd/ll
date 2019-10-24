@@ -3,15 +3,30 @@
 </template>
 
 <script>
-// @ is an alias to /src
+import Vue from 'vue'
+import { TYPE_CONTANINER_ID } from '@/common/itemTypeConstant'
+// import BaseObjectItem from '@/components/BaseObjectItem'
+import TextInput from '@/components/TextInput'
 
 export default {
-  methods: {
-    dropItem(e) {
-      e.target.appendChild(e.dataTransfer.getData("text/html"));
+  data (){
+    return {
     }
   },
-  components: {}
+  methods: {
+    dropItem(e) {
+      const type = +e.dataTransfer.getData("text/plain");
+      if(type === TYPE_CONTANINER_ID){
+        let item = new Vue({
+          render: h => h(TextInput)
+        }).$mount();
+        this.$el.appendChild(item.$el);
+      }
+    }
+  },
+  components: {
+    TextInput
+  }
 };
 </script>
 <style scoped>

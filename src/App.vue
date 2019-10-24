@@ -16,7 +16,7 @@
   </div>
 </template>
 <script>
-import ComponentList from "./components/ComponentList";
+import ComponentList from "@/components/ComponentList";
 export default {
   components: {
     ComponentList
