@@ -1,23 +1,16 @@
 <template>
-    <div :class="classObject" :type="type" :container_type = "container_type">
+    <div :class="classObject" :type="type" :container_type = "container_type" @hover="hover">
         <label>{{name}}</label>
         <slot></slot>
+        <span @click="del"  v-show="show_del_btn">×</span>
     </div>
 </template>
 <script>
 export default {
     data (){
         return {
-            need_data: 0,
-            is_visible: 1,
-            is_lock: 0,
-            hide_label: 0,
-            name: '',
-            position: 'fl',
-            td_align: 'left',
-            is_show_tip: 0,
-            width_type: 1,
-            show_terminal: -1 // 显示端口，默认都显示
+            name:'',
+            show_del_btn: false
         }
     },
     props: {
@@ -36,6 +29,15 @@ export default {
                 object_item: true,
                 is_required: +this.need_data === 1
             }
+        }
+    },
+    methods: {
+        del (){
+            this.$el.parentNode.removeChild(this.$el);
+        },
+        hover (){
+            debugger;
+            show_del_btn = true;
         }
     }
 }
